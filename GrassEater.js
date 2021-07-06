@@ -1,10 +1,7 @@
-class GrassEater {
+class GrassEater extends livingcreator{
     constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.energy = 8;
         this.multiply = 0
-        this.directions = [];
+       
     }
 
     getNewCoordinates() {
@@ -101,7 +98,6 @@ class GrassEater {
             this.move()
         }
     }
-
     die() {
         matrix[this.y][this.x] = 0;
         for (var i in grassEaterArr) {

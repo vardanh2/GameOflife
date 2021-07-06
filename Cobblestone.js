@@ -1,8 +1,7 @@
 class Cobblestone extends livingcreator {
-    constructor(x, y,) {
-        super.constructor()
+    constructor(x, y) {
+       
+        super.chooseCell(x, y)
     }
-    chooseCell(character) { 
-        super.chooseCell(x,y)
-    }
+
 }
