@@ -1,6 +1,6 @@
-class GrassEater extends livingcreator{
+class GrassEater extends livingcreator {
     constructor(x, y) {
-        super(x,y)
+        super(x, y)
         this.multiply = 0
         this.energy = 8
     }
@@ -68,7 +68,7 @@ class GrassEater extends livingcreator{
         var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
         if (newCell) {
-            this.energy+=3
+            this.energy += 3
             var newX = newCell[0]
             var newY = newCell[1]
 

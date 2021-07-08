@@ -1,4 +1,4 @@
-function generator(matLen, gr, grEata, pr, cb, hun, greete) {
+function generator(matLen, gr, grEata, pr, cb, hun, greete,pos) {
     let matrix = [];
     for (let i = 0; i < matLen; i++) {
         matrix[i] = [];
@@ -49,17 +49,25 @@ function generator(matLen, gr, grEata, pr, cb, hun, greete) {
             matrix[x][y] = 6;
         }
     }
+    for (let i = 0; i < pos; i++) {
+        let x = Math.floor(Math.random() * matLen);
+        let y = Math.floor(Math.random() * matLen);
+        if (matrix[x][y] == 0) {
+            matrix[x][y] = 7;
+        }
+    }
     return matrix;
 }
 
 let side = 20;
 
-let matrix = generator(20, 80, 50, 35, 11, 11,20);
+let matrix = generator(20, 80, 50, 35, 11, 11,20,10);
 
 var grassArr = []
 var grassEaterArr = []
 var predatorArr = []
 var HunterArr = []
+var GrassVerArr = []
 
 function setup() {
     frameRate(3);
@@ -122,11 +130,13 @@ function draw() {
                 fill("orange");
                 rect(x * side, y * side, side, side);
             }
-
+            else if (matrix[y][x] == 7) {
+                fill("gray");
+                rect(x * side, y * side, side, side);
+            }
         }
     }
 
-    console.log (grassEaterArr[0].energy)
     for (var i in grassArr) {
         grassArr[i].mul();
 
@@ -142,4 +152,7 @@ function draw() {
     for (var i in HunterArr) {
         HunterArr[i].eat();
     }
-}
+    for (var i in GrassVerArr) {
+        GrassVerArr[i].muve(r);
+    }
+} 
