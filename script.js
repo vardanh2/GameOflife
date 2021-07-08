@@ -1,4 +1,4 @@
-function generator(matLen, gr, grEat, prs, kanv) {
+function generator(matLen, gr, grEata, pr, cb, hun, greete) {
     let matrix = [];
     for (let i = 0; i < matLen; i++) {
         matrix[i] = [];
@@ -13,44 +13,58 @@ function generator(matLen, gr, grEat, prs, kanv) {
             matrix[x][y] = 1;
         }
     }
-    for (let i = 0; i < grEat; i++) {
+    for (let i = 0; i < grEata; i++) {
         let x = Math.floor(Math.random() * matLen);
         let y = Math.floor(Math.random() * matLen);
         if (matrix[x][y] == 0) {
             matrix[x][y] = 2;
         }
     }
-    for (let i = 0; i < prs; i++) {
+    for (let i = 0; i < pr; i++) {
         let x = Math.floor(Math.random() * matLen);
         let y = Math.floor(Math.random() * matLen);
         if (matrix[x][y] == 0) {
             matrix[x][y] = 3;
         }
     }
-    for (let i = 0; i < kanv; i++) {
+
+    for (let i = 0; i < cb; i++) {
         let x = Math.floor(Math.random() * matLen);
         let y = Math.floor(Math.random() * matLen);
         if (matrix[x][y] == 0) {
             matrix[x][y] = 4;
         }
     }
-
+    for (let i = 0; i < hun; i++) {
+        let x = Math.floor(Math.random() * matLen);
+        let y = Math.floor(Math.random() * matLen);
+        if (matrix[x][y] == 0) {
+            matrix[x][y] = 5;
+        }
+    }
+    for (let i = 0; i < greete; i++) {
+        let x = Math.floor(Math.random() * matLen);
+        let y = Math.floor(Math.random() * matLen);
+        if (matrix[x][y] == 0) {
+            matrix[x][y] = 6;
+        }
+    }
     return matrix;
 }
 
-let side = 10;
+let side = 20;
 
-let matrix = generator(30, 150, 60   , 15, 10 ,0)
+let matrix = generator(20, 80, 50, 35, 11, 11,20);
 
 var grassArr = []
 var grassEaterArr = []
 var predatorArr = []
-var predspanArr = []
+var HunterArr = []
 
 function setup() {
-    frameRate(5);
+    frameRate(3);
     createCanvas(matrix[0].length * side, matrix.length * side);
-    background('#acacac');
+    background("f0a056");
 
 
 
@@ -66,36 +80,25 @@ function setup() {
             }
             else if (matrix[y][x] == 3) {
                 var predat = new Predator(x, y)
-                
-                
                 predatorArr.push(predat)
             }
-            else if (matrix[y][x] == 4) {
-
-                var predat = new predspan(x, y)
-
-                predspanArr.push(predspan)
-            }
-
             else if (matrix[y][x] == 5) {
-                var kanver = new kanver(x, y)
-                kanverArr.push(kanver)
+                var hun = new Hunter(x, y)
+                HunterArr.push(hun)
             }
 
         }
-    } 
+    } console.log(grassArr)
 }
 
 function draw() {
 
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
-            
-            
+
             if (matrix[y][x] == 1) {
                 fill("green");
                 rect(x * side, y * side, side, side);
-
             }
             else if (matrix[y][x] == 2) {
                 fill("yellow");
@@ -112,14 +115,18 @@ function draw() {
                 rect(x * side, y * side, side, side);
             }
             else if (matrix[y][x] == 5) {
-            fill("aqua");
-            rect(x * side, y * side, side, side);
+                fill("purple");
+                rect(x * side, y * side, side, side);
             }
-
-
+            else if (matrix[y][x] == 6) {
+                fill("orange");
+                rect(x * side, y * side, side, side);
+            }
 
         }
     }
+
+    console.log (grassEaterArr[0].energy)
     for (var i in grassArr) {
         grassArr[i].mul();
 
@@ -132,5 +139,7 @@ function draw() {
         predatorArr[i].mul();
         predatorArr[i].eat();
     }
+    for (var i in HunterArr) {
+        HunterArr[i].eat();
+    }
 }
-

@@ -6,9 +6,8 @@ class Grass extends livingcreator {
     }
     mul() {
         this.multiplay++;
-        var emptyCells = super.chooseCell(0);
+        var emptyCells = this.chooseCell(0);
         var newCell = random(emptyCells);
-
 
         if (newCell && this.multiplay >= 7) {
             var newX = newCell[0];

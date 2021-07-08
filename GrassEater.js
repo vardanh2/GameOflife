@@ -27,7 +27,7 @@ class GrassEater extends livingcreator{
         var emptyCells = this.chooseCell(0);
         var newCell = random(emptyCells);
 
-        if (newCell && this.multiply >= 15) {
+        if (newCell && this.multiply >= 15 && this.energy >= 16) {
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 2;
@@ -35,6 +35,7 @@ class GrassEater extends livingcreator{
             var newGrass = new GrassEater(newX, newY);
             grassEaterArr.push(newGrass);
             this.multiply = 0;
+            this.energy = 8
         }
     }
 
@@ -67,7 +68,7 @@ class GrassEater extends livingcreator{
         var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
         if (newCell) {
-            this.energy++
+            this.energy+=3
             var newX = newCell[0]
             var newY = newCell[1]
 
