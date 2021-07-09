@@ -52,8 +52,20 @@ function generator(matLen, gr, grEata, pr, cb, hun, greete,pos) {
     for (let i = 0; i < pos; i++) {
         let x = Math.floor(Math.random() * matLen);
         let y = Math.floor(Math.random() * matLen);
-        if (matrix[x][y] == 0) {
-            matrix[x][y] = 7;
+        if (x >= 1 && x < matrix[0].length - 1 && y >= 1 && y < matrix.length - 1) {    
+            if (matrix[x][y] == 0) {
+       
+                
+                matrix[x][y] = 7;
+         
+                
+
+                matrix[x-1][y] = 7;
+                matrix[x-1][y-1] = 7;
+                matrix[x][y-1] = 7;
+
+
+            }
         }
     }
     return matrix;
@@ -68,6 +80,7 @@ var grassEaterArr = []
 var predatorArr = []
 var HunterArr = []
 var GrassVerArr = []
+var posArr = []
 
 function setup() {
     frameRate(3);
@@ -94,13 +107,21 @@ function setup() {
                 var hun = new Hunter(x, y)
                 HunterArr.push(hun)
             }
+            else if (matrix[y][x] == 6) {
+                var greete = new GrassVer(x, y)
+                GrassVerArr.push(greete)
+            }
+            else if (matrix[y][x] == 7) {
+                
+                var pos = new Pos(x, y)
+                posArr.push(pos)
+            }
 
         }
-    } console.log(grassArr)
+    } 
 }
 
 function draw() {
-
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
 
@@ -131,7 +152,7 @@ function draw() {
                 rect(x * side, y * side, side, side);
             }
             else if (matrix[y][x] == 7) {
-                fill("gray");
+                fill("brown");
                 rect(x * side, y * side, side, side);
             }
         }
@@ -153,6 +174,12 @@ function draw() {
         HunterArr[i].eat();
     }
     for (var i in GrassVerArr) {
-        GrassVerArr[i].muve(r);
+        GrassVerArr[i].move(1)
+    }
+
+ 
+    for (var i in posArr) {
+    
+        posArr[i].eat();
     }
 } 

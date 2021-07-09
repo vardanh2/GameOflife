@@ -12,7 +12,6 @@ class GrassVer {
             [this.x, this.y + 1],
             [this.x + 1, this.y + 1]
         ];
-
     }
     chooseCell(character) {
 
@@ -35,10 +34,9 @@ class GrassVer {
         var emptyCells = this.chooseCell(0)
         var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
-
         if (newCell) {
             if (r == 1) {
-                console.log(newCell)
+
                 var newX = newCell[0]
                 var newY = newCell[1]
                 matrix[newY][newX] = matrix[this.y][this.x]
@@ -56,7 +54,5 @@ class GrassVer {
                 this.y = newY
             }
         }
-
     }
-    
 }
