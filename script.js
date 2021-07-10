@@ -53,18 +53,11 @@ function generator(matLen, gr, grEata, pr, cb, hun, greete,pos) {
         let x = Math.floor(Math.random() * matLen);
         let y = Math.floor(Math.random() * matLen);
         if (x >= 1 && x < matrix[0].length - 1 && y >= 1 && y < matrix.length - 1) {    
-            if (matrix[x][y] == 0) {
-       
-                
+            if (matrix[x][y] == 0) {           
                 matrix[x][y] = 7;
-         
-                
-
                 matrix[x-1][y] = 7;
                 matrix[x-1][y-1] = 7;
                 matrix[x][y-1] = 7;
-
-
             }
         }
     }
@@ -73,7 +66,7 @@ function generator(matLen, gr, grEata, pr, cb, hun, greete,pos) {
 
 let side = 20;
 
-let matrix = generator(20, 80, 50, 35, 11, 11,20,10);
+let matrix = generator(20, 80, 50, 35, 11, 11,20,5);
 
 var grassArr = []
 var grassEaterArr = []
@@ -83,7 +76,7 @@ var GrassVerArr = []
 var posArr = []
 
 function setup() {
-    frameRate(3);
+    frameRate(30);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background("f0a056");
 
