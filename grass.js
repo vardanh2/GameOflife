@@ -1,4 +1,5 @@
-class Grass extends livingcreator {
+let livingcreator = require("./class.js")
+module.exports =class Grass extends livingcreator {
     constructor(x, y) {
         super(x, y)
         this.multiplay = 0;
@@ -7,7 +8,7 @@ class Grass extends livingcreator {
     mul() {
         this.multiplay++;
         var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
         if (newCell && this.multiplay >= 7) {
             var newX = newCell[0];

@@ -1,9 +1,9 @@
-class Pos extends livingcreator {
+let livingcreator = require("./class.js")
+module.exports =class Pos extends livingcreator {
     constructor(x, y) {
         super(x, y)
         this.multiplay = 0;
 
-        console.log(1111111);
     }
     chooseCell(character) {
         

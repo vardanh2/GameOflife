@@ -1,8 +1,7 @@
-class livingcreator {
-    constructor(x, y, ) {
+module.exports =class livingcreator {
+    constructor(x, y) {
         this.x = x;
         this.y = y;
-     
         this.directions = [
             [this.x - 1, this.y - 1],
             [this.x, this.y - 1],
@@ -20,7 +19,6 @@ class livingcreator {
             var x = this.directions[i][0];
             var y = this.directions[i][1];
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-
                 if (matrix[y][x] == character) {
                     found.push(this.directions[i]);
                 }
@@ -28,4 +26,5 @@ class livingcreator {
         }
         return found;
     }
-}
+};
+

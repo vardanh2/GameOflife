@@ -1,4 +1,5 @@
-class Predator {
+let livingcreator = require("./class.js")
+module.exports =class Predator {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -39,7 +40,7 @@ class Predator {
     mul() {
         this.multiply++;
         var emptyCells = this.chooseCell(0);
-        var newCell = random(emptyCells);
+        var newCell = emptyCells[Math.floor(Math.random() * emptyCells.length)]
 
         if (newCell && this.multiply >= 15) {
             var newX = newCell[0];

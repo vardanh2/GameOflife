@@ -1,4 +1,5 @@
-class Hunter {
+let livingcreator = require("./class.js")
+module.exports =class Hunter {
     constructor(x, y) {
         this.x = x;
         this.y = y;
